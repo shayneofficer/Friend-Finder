@@ -11,7 +11,7 @@ if (process.env.JAWSDB_URL) {
         host: "localhost",
         port: 3307,
         user: "root",
-        password: "root",
+        password: "",
         database: "friends_db"
     });
 }
