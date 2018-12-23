@@ -1,22 +1,20 @@
 var express = require("express");
+var path = require("path");
 var router = express.Router();
 
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
+
 // A GET Route to /survey which should display the survey page.
-router.get("/survey", function (err, res) {
-    if (err) {
-        return console.log(err);
-    }
+router.get("/survey", function (req, res) {
+    console.log(path.join(__dirname, "../public/survey.html"));
 
-
+    res.sendFile(path.join(__dirname, "../public/survey.html"));
 });
 
 // A default, catch-all route that leads to home.html which displays the home page.
-router.get("/", function (err, res) {
-    if (err) {
-        return console.log(err);
-    }
-
-    res.send()
+router.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/home.html"));
 });
 
 module.exports = router;
